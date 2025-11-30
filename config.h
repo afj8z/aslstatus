@@ -33,14 +33,15 @@ static struct arg_t args[] = {
 /* { bspwm_ws,		" [ %s ]%%{r}",	NULL,		0,	END }, */
 #endif
 { vol_perc,        "^fg(DBD0C6)[V %s]",    NULL,          0,           END },
-{ battery_perc,    "^fg(DBD0C6)::[B %s",    "BAT1",        30 _SEC,      END },
+{ battery_perc,    "^fg(DBD0C6)[B %s",    "BAT1",        30 _SEC,      END },
 { cpu_perc,        "^fg(DBD0C6) C %s",    NULL,          5 _SEC,        END },
 { temp,            "^fg(DBD0C6) %sc",                NULL,          5 _SEC,        END },
 { ram_used,        "^fg(DBD0C6) M %s]",    NULL,          4 _SEC,        END },
-{ datetime,        "^fg(DBD0C6)::[%s]",    "%H:%M",       30 _SEC,      END },
+{ power_profile, "[P %s]", NULL, 0,        END },
+{ datetime,        "^fg(DBD0C6)[%s]",    "%H:%M",       30 _SEC,      END },
 #if USE_X && USE_XKB
 // { keymap,		"[%s ",	NULL,		 0,	END },
-{ kernel_release, "::[6.16.9-arch1]", NULL, ONCE, END },
+// { kernel_release, "::[6.16.9-arch1]", NULL, ONCE, END },
 #endif
 
 };
