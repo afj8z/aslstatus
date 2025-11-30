@@ -7,7 +7,7 @@
 /* for usleep */
 #define _SEC *1000
 #define _MIN *(60 _SEC)
-#define _HR  *(60 _MIN)
+#define _HR *(60 _MIN)
 
 /* interval to run only once */
 #define ONCE ((unsigned int)-1)
@@ -22,7 +22,7 @@ static const char unknown_str[] = "n/a";
  * then change `BUFF_SZ` in lib/util.h
  */
 
-#define IFC "wlan0" /* wifi interface */
+#define IFC "mlan0" /* wifi interface */
 
 /* clang-format off */
 static struct arg_t args[] = {
@@ -32,19 +32,15 @@ static struct arg_t args[] = {
 #if USE_X
 /* { bspwm_ws,		" [ %s ]%%{r}",	NULL,		0,	END }, */
 #endif
-{ disk_perc,		" [# %s%%",	"/",		25 _SEC,	END },
-{ disk_free,		" %s]",		"/",		25 _SEC,	END },
-{ cpu_perc,		"-[ %3s%%]",	NULL,		 1 _SEC,	END },
-{ load_avg,		"-[%s]",	NULL,		 3 _SEC,	END },
-{ ram_used,		"-[﬙ %s]", 	NULL,		 3 _SEC,	END },
-{ vol_perc,		"-[%s]",	NULL,		 0,		END },
-{ wifi_essid,		"-[直 \"%s\"",	IFC,		 2 _SEC,	END },
-{ wifi_perc,		" %3s%%]",	IFC,		 2 _SEC,	END },
-{ battery_state,	"-[%s",		"BAT0",		 2 _SEC,	END },
-{ battery_perc,		" %3s%%]",	"BAT0",		 1 _MIN,	END },
-{ datetime,		"-[ %s]",	"%H:%M:%S",	 1 _SEC,	END },
+{ vol_perc,        "^fg(DBD0C6)[V %s]",    NULL,          0,           END },
+{ battery_perc,    "^fg(DBD0C6)::[B %s",    "BAT1",        30 _SEC,      END },
+{ cpu_perc,        "^fg(DBD0C6) C %s",    NULL,          5 _SEC,        END },
+{ temp,            "^fg(DBD0C6) %sc",                NULL,          5 _SEC,        END },
+{ ram_used,        "^fg(DBD0C6) M %s]",    NULL,          4 _SEC,        END },
+{ datetime,        "^fg(DBD0C6)::[%s]",    "%H:%M",       30 _SEC,      END },
 #if USE_X && USE_XKB
-{ keymap,		"-[ %s] ",	NULL,		 0,	END },
+// { keymap,		"[%s ",	NULL,		 0,	END },
+{ kernel_release, "::[6.16.9-arch1]", NULL, ONCE, END },
 #endif
 
 };
