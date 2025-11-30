@@ -226,6 +226,10 @@ void wifi_perc FUNC_ARGS;
 void wifi_essid FUNC_ARGS;
 #define wifi_essid {wifi_essid, "wifi_essid", sizeof(struct wifi_essid_data)}
 
+/* power profile */
+void power_profile FUNC_ARGS;
+#define power_profile {power_profile, "power_profile", sizeof(FILE*)}
+
 /* clang-format on */
 #endif /* ASLSTATUS_H_NO_COMP */
 
