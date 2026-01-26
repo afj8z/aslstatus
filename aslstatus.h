@@ -230,6 +230,10 @@ void wifi_essid FUNC_ARGS;
 void power_profile FUNC_ARGS;
 #define power_profile {power_profile, "power_profile", sizeof(FILE*)}
 
+/* vpn */
+void vpn_status FUNC_ARGS;
+#define vpn_status {vpn_status, "vpn_status", 0}
+
 /* clang-format on */
 #endif /* ASLSTATUS_H_NO_COMP */
 
