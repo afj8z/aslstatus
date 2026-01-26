@@ -20,11 +20,11 @@
 /* #define KEYMAP_NUMLOCK " NL" */
 
 /* BATTERY */
-#define BATTERY_FULL "^(98C379)*"        /* "f" */
-#define BATTERY_UNKNOWN "^(D08770)?"     /* "?" */
-#define BATTERY_CHARGING "^(83A4A6)+"    /* "+" */
-#define BATTERY_DISCHARGING "^(D08770)-" /* "-" */
-#define BATTERY_REMAINING_NOT_DISCHARGING "^(D08770)?"
+#define BATTERY_FULL "^fg(98C379)*"        /* "f" */
+#define BATTERY_UNKNOWN "^fg(D08770)?"     /* "?" */
+#define BATTERY_CHARGING "^fg(83A4A6)+"    /* "+" */
+#define BATTERY_DISCHARGING "^fg(D08770)-" /* "-" */
+#define BATTERY_REMAINING_NOT_DISCHARGING "^fg(D08770)?"
 
 /* BSPWM */
 #define BSPWM_FOCUSED_RESET "%{F-}%{B-}"
@@ -39,9 +39,9 @@
 #define ENTROPY_INFINITY "\xe2\x88\x9e" /* will be used only on BSD */
 
 /* VOLUME */
-#define VOLUME_SYM ""     /* you can specify volume sym there */
-#define VOLUME_PERCENT "" /* percent sign */
-#define VOLUME_MUTED "^(D08770)mu" /* string to be displayed if muted */
+#define VOLUME_SYM ""                /* you can specify volume sym there */
+#define VOLUME_PERCENT ""            /* percent sign */
+#define VOLUME_MUTED "^fg(D08770)mu" /* string to be displayed if muted */
 #define VOLUME_ALSA_CARD "default"
 #define VOLUME_ALSA_MIXER_NAME "Master"
 #define VOLUME_PULSE_PROC_NAME "volume:pulse" /* PulseAudio thread name */

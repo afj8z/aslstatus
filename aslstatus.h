@@ -1,61 +1,61 @@
 #ifndef _ASLSTATUS_H
 #define _ASLSTATUS_H
 
-#include <stdio.h>    /* FILE */
-#include <pthread.h>  /* PTHREAD_MUTEX_INITIALIZER */
 #include <inttypes.h> /* uintmax_t in cpu_perc */
+#include <pthread.h>  /* PTHREAD_MUTEX_INITIALIZER */
+#include <stdio.h>    /* FILE */
 
 #if USE_X
-#	include <xcb/xcb.h>
+#include <xcb/xcb.h>
 #endif
 
 #include "lib/util.h"
 
-#include "components/cpu.h"
-#include "components/wifi.h"
-#include "components/volume.h"
 #include "components/battery.h"
-#include "components/netspeed.h"
 #include "components/brightness.h"
+#include "components/cpu.h"
+#include "components/netspeed.h"
+#include "components/volume.h"
+#include "components/wifi.h"
 
 #define FUNC_ARGS (char *, const char *, uint32_t, static_data_t *)
 
-#define END                                                                   \
-	{                                                                     \
-		.pid = -1, .tid = 0, .data = { 0 },                           \
-		.static_data = { .cleanup = NULL, .data = NULL },             \
-		.mutex	     = PTHREAD_MUTEX_INITIALIZER                      \
-	}
+#define END                                                                    \
+  {.pid = -1,                                                                  \
+   .tid = 0,                                                                   \
+   .data = {0},                                                                \
+   .static_data = {.cleanup = NULL, .data = NULL},                             \
+   .mutex = PTHREAD_MUTEX_INITIALIZER}
 
 typedef void (*cleanup_func_t)(void *);
 
 typedef struct static_data_t {
-	cleanup_func_t cleanup;
-	void	     *data;
+  cleanup_func_t cleanup;
+  void *data;
 } static_data_t;
 
 typedef void(*func_t) FUNC_ARGS;
 
 typedef struct func_data_t {
-	func_t	   func;
-	const char name[16];
-	size_t	   static_size;
+  func_t func;
+  const char name[16];
+  size_t static_size;
 } func_data_t;
 
 struct segment_t {
-	pid_t		pid;
-	pthread_t	tid;
-	char		data[BUFF_SZ];
-	static_data_t	static_data;
-	pthread_mutex_t mutex;
+  pid_t pid;
+  pthread_t tid;
+  char data[BUFF_SZ];
+  static_data_t static_data;
+  pthread_mutex_t mutex;
 };
 
 struct arg_t {
-	const func_data_t f;
-	const char	   *fmt;
-	const char	   *args;
-	const uint32_t	  interval;
-	struct segment_t  segment;
+  const func_data_t f;
+  const char *fmt;
+  const char *args;
+  const uint32_t interval;
+  struct segment_t segment;
 };
 
 #ifdef ASLSTATUS_H_NEED_COMP
@@ -233,6 +233,10 @@ void power_profile FUNC_ARGS;
 /* vpn */
 void vpn_status FUNC_ARGS;
 #define vpn_status {vpn_status, "vpn_status", 0}
+
+/* persist_command */
+void persist_command FUNC_ARGS;
+#define persist_command {persist_command, "persist_cmd", sizeof(FILE*)}
 
 /* clang-format on */
 #endif /* ASLSTATUS_H_NO_COMP */

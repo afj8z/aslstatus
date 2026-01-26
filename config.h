@@ -28,9 +28,9 @@ static const char unknown_str[] = "n/a";
 static struct arg_t args[] = {
 
 /* function		format		argument	interval (in ms) */
-{ run_command, "^fg(DBD0C6)| ^(A3BE8C)%s",   "status_media.sh",   ONCE,   END },
+{ persist_command, "^fg(DBD0C6)| ^fg(A3BE8C)%s", "status_media.sh", 0, END },
 { vpn_status,   "^fg(DBD0C6)| ^fg(E06C75)%s",   "tun0",   5 _SEC,   END },
-{ wifi_essid,      "^fg(DBD0C6)Ntk ^(A3BE8C)%s",    IFC,          5 _SEC,           END },
+{ wifi_essid,      "^fg(DBD0C6)Ntk ^fg(A3BE8C)%s",    IFC,          5 _SEC,           END },
 { vol_perc,        "^fg(DBD0C6) | Vol %s",    NULL,          0,           END },
 { battery_perc,    "^fg(DBD0C6) | Bat %s",    "BAT0",        30 _SEC,      END },
 { battery_state, "^fg(DBD0C6)%s",    "BAT0",        30 _SEC,      END },
